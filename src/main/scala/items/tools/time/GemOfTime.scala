@@ -16,7 +16,6 @@ import collection.JavaConverters._
   * Created by james-forster on 08/06/17.
   */
 class GemOfTime extends DivineShard {
-  bFull3D = true
   setUnlocalizedName("gem_of_time")
   setMaxDamage(1)
 

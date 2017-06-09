@@ -19,4 +19,8 @@ object Recipes {
     GameRegistry.addShapelessRecipe(new ItemStack(ModItems.wandOfTime), Items.STICK, ModItems.shardOfTime)
     GameRegistry.addShapelessRecipe(new ItemStack(ModItems.gemOfTime), Items.EMERALD, ModItems.shardOfTime)
   }
+
+  def initSpaceRecipes(): Unit = {
+    GameRegistry.addShapelessRecipe(new ItemStack(ModItems.gemOfSpace), Items.EMERALD, ModItems.shardOfSpace)
+  }
 }

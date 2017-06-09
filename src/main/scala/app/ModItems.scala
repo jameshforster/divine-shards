@@ -2,6 +2,7 @@ package app
 
 import items.ModItem
 import items.shards._
+import items.tools.space.GemOfSpace
 import items.tools.time.{GemOfTime, ScepterOfTime, WandOfTime}
 import net.minecraft.item.Item
 import net.minecraftforge.fml.common.registry.GameRegistry
@@ -28,7 +29,12 @@ object ModItems {
 
   val timeItems = Seq(scepterOfTime, wandOfTime, gemOfTime)
 
-  val seq: Seq[ModItem] = shards ++ timeItems
+  //Space Items
+  val gemOfSpace = new GemOfSpace
+
+  val spaceItems = Seq(gemOfSpace)
+
+  val seq: Seq[ModItem] = shards ++ timeItems ++ spaceItems
 
   def init(): Unit = {
     seq.foreach(item => GameRegistry.register[Item](item))

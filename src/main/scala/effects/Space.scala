@@ -2,6 +2,7 @@ package effects
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.entity.{Entity, EntityLivingBase}
+import net.minecraft.potion.Potion
 import net.minecraft.util.text.TextComponentString
 import net.minecraft.world.World
 
@@ -12,6 +13,15 @@ import scala.util.Random
   * Created by james-forster on 08/06/17.
   */
 object Space {
+
+  class SpatialChaos extends Potion(true, 1) {
+    override def isInstant: Boolean = false
+
+    override def performEffect(entityLivingBaseIn: EntityLivingBase, p_76394_2_ : Int): Unit = {
+      if (Random.nextInt(20) == 0) entityLivingBaseIn.attemptTeleport(entityLivingBaseIn.posX + Random.nextInt(25),
+        entityLivingBaseIn.posY, entityLivingBaseIn.posZ + Random.nextInt(25))
+    }
+  }
 
   def spatialDisruption(player: EntityPlayer, world: World): Unit = {
     val source = player.getPosition

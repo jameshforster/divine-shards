@@ -2,7 +2,7 @@ package effects
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.entity.{Entity, EntityLivingBase}
-import net.minecraft.potion.Potion
+import net.minecraft.potion.{Potion, PotionEffect}
 import net.minecraft.util.text.TextComponentString
 import net.minecraft.world.World
 
@@ -28,13 +28,13 @@ object Space {
     val victims = world.getLoadedEntityList.asScala.filter(_.getPosition.distanceSq(source) < 25)
 
     def filterLivingEntity(f: EntityLivingBase => Unit): Entity => Unit = {
-      case _: EntityLivingBase => f
+      case entity: EntityLivingBase if player.getName != entity.getName => f
       case _ =>
     }
 
     def triggerSpatialChaos(): Unit = {
       val spatialChaos: EntityLivingBase => Unit = { victim =>
-        //TODO add spatial chaos mechanics
+        victim.addPotionEffect(new PotionEffect(new SpatialChaos, 30))
         victim.sendMessage(new TextComponentString("The space around you has become heavily distorted!"))
       }
 

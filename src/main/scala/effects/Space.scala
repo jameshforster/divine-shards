@@ -3,6 +3,7 @@ package effects
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.entity.{Entity, EntityLivingBase}
 import net.minecraft.potion.{Potion, PotionEffect}
+import net.minecraft.util.math.RayTraceResult
 import net.minecraft.util.text.TextComponentString
 import net.minecraft.world.World
 
@@ -78,5 +79,24 @@ object Space {
       case n if n > 44 => triggerScatter()
       case _ => triggerSpatialChaos()
     }
+  }
+
+  def teleport(player: EntityPlayer, world: World): Unit = {
+    val ray = world.rayTraceBlocks(player.getPositionVector, player.getLookVec)
+
+    ray.typeOfHit match {
+      case RayTraceResult.Type.ENTITY =>
+        val entity = ray.entityHit
+        player.attemptTeleport(entity.posX, entity.posY, entity.posZ)
+      case RayTraceResult.Type.BLOCK =>
+        val block = ray.getBlockPos
+        player.attemptTeleport(block.getX, block.getY, block.getZ)
+      case _ => player.sendMessage(new TextComponentString("Could not reach target."))
+    }
+  }
+
+  def defensiveWarp(player: EntityPlayer, attacker: EntityLivingBase): Unit = {
+    attacker.attemptTeleport(player.posX + Random.nextInt(50), player.posY, player.posZ + Random.nextInt(50))
+    attacker.sendMessage(new TextComponentString("You are warped away!"))
   }
 }

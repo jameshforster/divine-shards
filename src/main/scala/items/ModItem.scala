@@ -15,6 +15,7 @@ trait ModItem extends Item {
     override def getTabIconItem: Item = Items.DIAMOND
   }
   setRegistryName(Main.MODID)
+  setCreativeTab(tab)
 }
 
 trait DivineShard extends ModItem {
@@ -27,6 +28,5 @@ trait DivineShard extends ModItem {
     }
   }
 
-  setCreativeTab(tab)
   maxStackSize = 1
 }

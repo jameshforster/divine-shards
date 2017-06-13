@@ -12,6 +12,7 @@ object Recipes {
 
   def init(): Unit = {
     initTimeRecipes()
+    initSpaceRecipes()
   }
 
   def initTimeRecipes(): Unit = {

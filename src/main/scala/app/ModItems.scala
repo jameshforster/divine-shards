@@ -2,7 +2,7 @@ package app
 
 import items.ModItem
 import items.shards._
-import items.tools.space.{ArmourOfSpace, GemOfSpace}
+import items.tools.space.{ArmourOfSpace, EyeOfSpace, GemOfSpace}
 import items.tools.time.{GemOfTime, ScepterOfTime, WandOfTime}
 import net.minecraft.item.Item
 import net.minecraftforge.fml.common.registry.GameRegistry
@@ -32,8 +32,9 @@ object ModItems {
   //Space Items
   val gemOfSpace = new GemOfSpace
   val armourOfSpace = new ArmourOfSpace
+  val eyeOfSpace = new EyeOfSpace
 
-  val spaceItems = Seq(gemOfSpace, armourOfSpace)
+  val spaceItems = Seq(gemOfSpace, armourOfSpace, eyeOfSpace)
 
   val seq: Seq[ModItem] = shards ++ timeItems ++ spaceItems
 

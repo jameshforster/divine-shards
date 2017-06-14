@@ -16,7 +16,7 @@ import net.minecraft.world.World
 class WandOfTime extends DivineShard {
   bFull3D = true
   setUnlocalizedName("wand_of_time")
-  setMaxDamage(10)
+  setMaxDamage(50)
 
   override def onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult[ItemStack] = {
     val item = playerIn.getHeldItem(handIn)

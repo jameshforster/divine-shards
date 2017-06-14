@@ -23,5 +23,7 @@ object Recipes {
 
   def initSpaceRecipes(): Unit = {
     GameRegistry.addShapelessRecipe(new ItemStack(ModItems.gemOfSpace), Items.EMERALD, ModItems.shardOfSpace)
+    GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armourOfSpace), Items.DIAMOND_CHESTPLATE, ModItems.shardOfSpace)
+    GameRegistry.addShapelessRecipe(new ItemStack(ModItems.eyeOfSpace), Items.ENDER_EYE, ModItems.shardOfSpace)
   }
 }
